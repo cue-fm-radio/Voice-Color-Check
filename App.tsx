@@ -80,7 +80,7 @@ const App: React.FC = () => {
       <header className="relative z-10 pt-8 pb-6 flex flex-col items-center space-y-4">
         <div className="bg-white/90 backdrop-blur-md px-6 py-4 rounded-[2rem] shadow-lg border-2 border-orange-100 flex flex-col md:flex-row items-center gap-6 md:gap-8 max-w-2xl w-[95%]">
             {/* Logo Image */}
-            <div className="w-28 h-28 md:w-32 md:h-32 relative flex-shrink-0 bg-white rounded-full p-1 shadow-md border-2 border-sky-400">
+            <div className="w-28 h-28 md:w-32 md:h-32 relative flex-shrink-0 bg-white rounded-full p-1">
                <img 
                  src="./logo.png" 
                  alt="エンカレ！ロゴ" 
@@ -99,7 +99,7 @@ const App: React.FC = () => {
             
             <div className="text-center md:text-left flex-1">
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
-                  <span className="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold tracking-wider">FM Haro! Presents</span>
+                  <span className="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold tracking-wider">静岡大学放送研究会 Cue-FM 浜松</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-sky-500 drop-shadow-sm font-zen-maru leading-tight">
                 エンカレ！<br/><span className="text-3xl md:text-4xl text-gray-600">声診断</span>
@@ -156,7 +156,7 @@ const App: React.FC = () => {
            <GyozaIcon className="w-8 h-8" />
            <UnagiIcon className="w-12 h-4" />
         </div>
-        <p className="font-medium">Produced by 静岡大学放送研究会 Cue-FM浜松!</p>
+        <p className="font-medium">Produced by 静岡大学放送研究会 Cue-FM浜松</p>
       </footer>
     </div>
   );
