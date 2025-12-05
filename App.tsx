@@ -127,7 +127,7 @@ const App: React.FC = () => {
             </div>
             <div className="text-center">
                <h3 className="text-xl font-bold text-gray-700">音声を解析中...</h3>
-               <p className="text-gray-500 mt-2">AIが声のトーンや響きから<br/>あなたの遠州カラータイプを診断しています</p>
+               <p className="text-gray-500 mt-2">AIが声のトーンや響きから<br/>あなたのカラータイプを診断しています</p>
             </div>
           </div>
         )}
