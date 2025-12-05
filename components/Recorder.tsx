@@ -8,6 +8,7 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [timeLeft, setTimeLeft] = useState(15); // 15 seconds recording
   const [showConsentModal, setShowConsentModal] = useState(false);
+  const [scriptVisible, setScriptVisible] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,6 +16,8 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+
+  const script = `静岡大学放送研究会がお届けするラジオ番組、「FM Haro!エンカレ！」\n番組の合言葉は、「現役学生が、遠州を全力でエンカレッジ！」。\n私たちが愛するこの遠州地域を、学生のパワーでどんどん応援していく番組です！\n学生の「推し」である、地元の美味しいお店や、輝いている人を「フカボリ」！ あなたの知らない遠州の魅力が、きっと見つかります！\n放送は毎月第3・第4木曜日、お昼12時15分からFM Haro!で放送中!また、Spotifyでアーカイブを配信しています。ぜひ聞いてね！`;
 
   const startRecording = async () => {
     try {
@@ -130,6 +133,10 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
     return () => clearInterval(interval);
   }, [isRecording, timeLeft, stopRecording]);
 
+  const toggleScriptVisibility = () => {
+    setScriptVisible(!scriptVisible);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-md mx-auto p-8 bg-white/70 backdrop-blur-md rounded-[2rem] shadow-2xl border border-sky-100/50">
       
@@ -200,6 +207,23 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
           </span>
         </button>
       )}
+
+      {/* Script Display */}
+      <div className="text-center">
+        <button
+          onClick={toggleScriptVisibility}
+          className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+        >
+          {scriptVisible ? "原稿を非表示" : "原稿を表示"}
+        </button>
+        {scriptVisible && (
+          <div style={{ fontSize: '1.5em' }}>
+            <pre className="mt-4 p-4 text-left text-gray-800 bg-gray-100 rounded-lg shadow-inner">
+              {script}
+            </pre>
+          </div>
+        )}
+      </div>
 
       {/* Consent Modal */}
       {showConsentModal && (
