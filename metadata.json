@@ -1,0 +1,7 @@
+{
+  "name": "Voice Color Diagnosis",
+  "description": "Analyzes voice recordings to diagnose personality traits based on a 12-color spectrum using Gemini API.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
