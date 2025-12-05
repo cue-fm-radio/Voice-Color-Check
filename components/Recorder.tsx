@@ -7,6 +7,7 @@ interface RecorderProps {
 const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [timeLeft, setTimeLeft] = useState(15); // 15 seconds recording
+  const [showConsentModal, setShowConsentModal] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -189,7 +190,7 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
         </div>
       ) : (
         <button
-          onClick={startRecording}
+          onClick={() => setShowConsentModal(true)}
           className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-gradient-to-br from-orange-400 via-orange-500 to-sky-500 rounded-full hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300"
         >
           <span className="absolute inset-0 w-full h-full rounded-full animate-pulse bg-gradient-to-r from-orange-300 via-yellow-300 to-sky-300 opacity-50 blur-lg group-hover:opacity-75"></span>
@@ -198,6 +199,55 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
              診断スタート
           </span>
         </button>
+      )}
+
+      {/* Consent Modal */}
+      {showConsentModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="w-full max-w-md mx-4 bg-white rounded-3xl shadow-2xl p-8 space-y-6 animate-in fade-in scale-95 duration-200">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0">
+                <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800">音声データの送信について</h3>
+                <p className="text-sm text-gray-600 mt-1">ご確認ください</p>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-2">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                このアプリはGoogle Gemini APIを使用して、あなたの音声を分析し、声のトーンや響きから個性や特徴を診断します。
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed font-semibold">
+                ✓ 音声データはGoogle Gemini APIに送信されます
+              </p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Googleのプライバシーポリシー</a>をご確認ください。
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                onClick={() => {
+                  setShowConsentModal(false);
+                  startRecording();
+                }}
+                className="w-full px-6 py-3 font-bold text-white bg-gradient-to-r from-orange-500 to-sky-500 rounded-lg hover:shadow-lg transition-all duration-200"
+              >
+                同意して録音を開始
+              </button>
+              <button
+                onClick={() => setShowConsentModal(false)}
+                className="w-full px-6 py-3 font-bold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200"
+              >
+                キャンセル
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
