@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.31.0",
+    "html2canvas": "^1.4.1",
     "lz-string": "^1.5.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.1",
@@ -17,7 +18,9 @@
     "recharts": "^3.5.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251205.0",
     "@types/node": "^22.14.0",
+    "@types/uuid": "^10.0.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"

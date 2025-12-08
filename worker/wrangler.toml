@@ -1,0 +1,13 @@
+name = "voice-color-check-worker"
+main = "src/index.ts"
+compatibility_date = "2024-02-08"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "voice-color-results"
+preview_bucket_name = "voice-color-results-preview"
+
+[cors]
+origins = ["*"]
+methods = ["POST", "OPTIONS"]
+max_age = 86400

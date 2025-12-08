@@ -94,7 +94,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <header className="relative z-10 pt-8 pb-6 flex flex-col items-center space-y-4">
+      <header id="app-header" className="relative z-10 pt-8 pb-6 flex flex-col items-center space-y-4">
         <div className="bg-white/90 backdrop-blur-md px-6 py-4 rounded-[2rem] shadow-lg border-2 border-orange-100 flex flex-col md:flex-row items-center gap-6 md:gap-8 max-w-2xl w-[95%]">
           {/* Logo Image */}
           <div className="w-28 h-28 md:w-32 md:h-32 relative flex-shrink-0 bg-white rounded-full p-1">
