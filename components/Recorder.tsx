@@ -23,7 +23,7 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
-      
+
       // Setup MediaRecorder
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorderRef.current = mediaRecorder;
@@ -89,9 +89,9 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
 
       for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
-        
+
         // Encare Brand Colors (Orange to Sky Blue)
-        const hue = 30 + (i / bufferLength) * 160; 
+        const hue = 30 + (i / bufferLength) * 160;
         ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
 
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
@@ -139,12 +139,12 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-md mx-auto p-8 bg-white/70 backdrop-blur-md rounded-[2rem] shadow-2xl border border-sky-100/50">
-      
+
       <div className="relative w-full h-48 bg-gray-900 rounded-2xl overflow-hidden shadow-inner ring-4 ring-orange-100">
-        <canvas 
-          ref={canvasRef} 
-          width={400} 
-          height={200} 
+        <canvas
+          ref={canvasRef}
+          width={400}
+          height={200}
           className="w-full h-full object-cover opacity-90"
         />
         {!isRecording && (
@@ -162,8 +162,8 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
           {isRecording ? "録音中..." : "声を録音する"}
         </h2>
         <p className="text-gray-600 text-sm">
-          {isRecording 
-            ? "自然な声で話してください（自己紹介など）" 
+          {isRecording
+            ? "自然な声で話してください（自己紹介など）"
             : "ボタンを押して15秒間話してください"}
         </p>
       </div>
@@ -202,8 +202,8 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
         >
           <span className="absolute inset-0 w-full h-full rounded-full animate-pulse bg-gradient-to-r from-orange-300 via-yellow-300 to-sky-300 opacity-50 blur-lg group-hover:opacity-75"></span>
           <span className="relative flex items-center gap-3 text-lg">
-             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-             診断スタート
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+            診断スタート
           </span>
         </button>
       )}
@@ -217,8 +217,8 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
           {scriptVisible ? "原稿を非表示" : "原稿を表示"}
         </button>
         {scriptVisible && (
-          <div style={{ fontSize: '1.5em' }}>
-            <pre className="mt-4 p-4 text-left text-gray-800 bg-gray-100 rounded-lg shadow-inner">
+          <div className="w-full max-w-full overflow-hidden">
+            <pre className="mt-4 p-4 text-left text-gray-800 bg-gray-100 rounded-lg shadow-inner whitespace-pre-wrap break-words text-sm md:text-base leading-relaxed font-sans">
               {script}
             </pre>
           </div>
