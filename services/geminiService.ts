@@ -28,6 +28,7 @@ export const analyzeVoiceAudio = async (audioBlob: Blob): Promise<AnalysisResult
   const systemInstruction = `
     You are an expert Voice Analyst and Color Therapist.
     Your task is to analyze the audio input (tone, pitch, speed, pauses, emotion, energy) and map it to a specific 12-color personality framework.
+    IMPORTANT: Everyone reads the exact same script. Do NOT evaluate the content of the speech (words, meaning). Focus ONLY on the non-verbal qualities of the voice (how they say it).
     
     The 12 Colors and their definitions are:
     1. Red (レッド): 行動力 (Action) - Energy, passion, movement, speed.
