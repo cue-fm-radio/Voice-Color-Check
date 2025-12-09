@@ -11,6 +11,7 @@ import {
 import { AnalysisResult, ColorParameter } from '../types';
 import { QRCodeSVG } from 'qrcode.react';
 import { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import html2canvas from 'html2canvas';
 
 interface ResultChartProps {
@@ -213,8 +214,8 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
         </button>
 
         {/* QR Code Modal */}
-        {showQR && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowQR(false)}>
+        {showQR && createPortal(
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowQR(false)}>
             <div
               className="bg-white p-8 rounded-3xl shadow-2xl max-w-lg w-full flex flex-col items-center space-y-6 animate-in zoom-in-95 duration-200 max-h-[95vh] max-w-[95vw] overflow-y-auto"
               onClick={e => e.stopPropagation()}
@@ -252,7 +253,8 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
                 閉じる
               </button>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
 
