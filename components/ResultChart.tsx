@@ -292,14 +292,12 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
         {/* Chart */}
         <div className="flex justify-center mb-8">
           <div className="w-[500px] h-[400px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-                <PolarGrid stroke="#e5e7eb" />
-                <PolarAngleAxis dataKey="label" tick={CustomTick} style={{ fontSize: '14px', fontWeight: 'bold' }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                <Radar name="Voice Type" dataKey="score" stroke="#8884d8" strokeWidth={3} fill="#8b5cf6" fillOpacity={0.4} />
-              </RadarChart>
-            </ResponsiveContainer>
+            <RadarChart width={500} height={400} cx="50%" cy="50%" outerRadius="70%" data={data}>
+              <PolarGrid stroke="#e5e7eb" />
+              <PolarAngleAxis dataKey="label" tick={CustomTick} style={{ fontSize: '14px', fontWeight: 'bold' }} />
+              <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+              <Radar name="Voice Type" dataKey="score" stroke="#8884d8" strokeWidth={3} fill="#8b5cf6" fillOpacity={0.4} />
+            </RadarChart>
           </div>
           <p className="text-xs text-slate-500 mt-4 text-center max-w-2xl mx-auto leading-relaxed">
             ※本診断結果はAIによる解析に基づくものであり、結果を完全に保証するものではありません。エンターテイメントとしてお楽しみください。
