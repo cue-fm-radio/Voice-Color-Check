@@ -161,6 +161,10 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
             </RadarChart>
           </ResponsiveContainer>
           <p className="text-xs text-gray-400 mt-2">※グラフは各要素の強さを表しています</p>
+          <p className="text-[10px] text-gray-400 mt-1 text-center">
+            ※本診断結果はAIによる解析に基づくものであり、結果を完全に保証するものではありません。<br />
+            エンターテイメントとしてお楽しみください。
+          </p>
         </div>
 
         {/* Details List Section */}
@@ -297,6 +301,9 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
               </RadarChart>
             </ResponsiveContainer>
           </div>
+          <p className="text-xs text-slate-500 mt-4 text-center max-w-2xl mx-auto leading-relaxed">
+            ※本診断結果はAIによる解析に基づくものであり、結果を完全に保証するものではありません。エンターテイメントとしてお楽しみください。
+          </p>
         </div>
 
         {/* Details Grid (2 Columns) */}
@@ -321,7 +328,7 @@ const ResultChart: React.FC<ResultChartProps> = ({ result, onReset, isShared = f
           ))}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

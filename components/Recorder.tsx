@@ -248,6 +248,9 @@ const Recorder: React.FC<RecorderProps> = ({ onRecordingComplete }) => {
               <p className="text-sm text-gray-700 leading-relaxed font-semibold">
                 ✓ 音声データはGoogle Gemini APIに送信されます
               </p>
+              <p className="text-sm text-gray-700 leading-relaxed font-semibold">
+                ✓ 出力結果はGoogle Gemini APIによって生成されます。出力結果を完全に保証するものではありません。
+              </p>
               <p className="text-sm text-gray-600 leading-relaxed">
                 詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Googleのプライバシーポリシー</a>をご確認ください。
               </p>
